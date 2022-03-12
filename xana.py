@@ -39,13 +39,13 @@ def handle_video(url, file_name, chat_id, caption, uid):
             if os.path.isfile('thumbs/thumb_' + str(uid)):
                 message = app.send_video(chat_id, PATH + file_name, caption, thumb='thumbs/thumb_' + str(uid), duration=duration) 
             elif thumb != 'null':
-                message = app.send_video(chat_id, PATH + file_name, caption, 'thumbs/' + thumb, duration=duration)
+                message = app.send_video(chat_id, PATH + file_name, caption, thumb='thumbs/' + thumb, duration=duration)
             else:
                 message = app.send_video(chat_id, PATH + file_name, caption, duration=duration)
         except:
             remove(PATH + file_name)
             remove('thumbs/' + thumb)
-        # app.forward_messages(, message.chat.id, message.message_id) #uncomment this if you want to forward everything somewhere
+        # app.forward_messages(, message.chat.id, message.message_id) 
         remove(PATH + file_name)
         remove('thumbs/' + thumb)
     else:
@@ -92,10 +92,10 @@ def start_job(client, message):
         # if test[x].isnumeric():
         #     message.forward( chat_id=-1001372231901, from_chat_id=message.chat.id, message_ids=message.message_id)
     if not helper.b_whitelisted(chat_id):
-        message.reply_text('Usuário não autorizado, contacte @anticongelante para obter acesso')
+        message.reply_text(' Usuário não autorizado, contacte @anticongelante para comprar o seu bot ')
         return
     if not is_valid:
-        message.reply_text('OFF ' + url, quote=True)
+        message.reply_text('OFF 🇺🇦 ' + url, quote=True)
         return
     ext = helper.get_ext(url)
     if not ext:
@@ -107,7 +107,7 @@ def start_job(client, message):
     else:
         caption = splited[1] 
         file_name = str(n) + ext
-    message.reply_text('Trying to download: ' + url)
+    message.reply_text('BAIXANDO 🇺🇦: 🇺' + url)
     scheduler.add_job(handle_video, args=(url, file_name, chat_id, caption, uid), max_instances=500)
 
 @app.on_message(filters.photo & filters.command(['thumb']))
@@ -139,7 +139,7 @@ def delete_thumb(client, message):
 def help(client, message):
     message.reply_text("""
     
-hggjhjhjnhnujn
+Bot Exclusivo  Compre o Seu @anticongelante 🇺🇦
 
     """)
 
